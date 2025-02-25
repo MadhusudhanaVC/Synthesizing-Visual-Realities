@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stability AI Image Generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #000000;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background: #000000;
+        }
+        h1 {
+            text-align: center;
+            color: #4A90E2;
+        }
+        form {
+            margin-bottom: 30px;
+            background: #000000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+        }
+        textarea:focus {
+            border-color: #4A90E2;
+            outline: none;
+        }
+        button {
+            display: inline-block;
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #4A90E2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #357ABD;
+        }
+        .image-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .image-container h2 {
+            color: #4A90E2;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text-to-Image Synthesis</h1>
+    <form action="/generate" method="post">
+        <label for="prompt">Enter your prompt:</label><br>
+        <textarea id="prompt" name="prompt" placeholder="Describe what you want to generate..." required></textarea><br>
+        <button type="submit">Generate Image</button>
+    </form>
+
+    {% if image %}
+    <div class="image-container">
+        <h2>Generated Image</h2>
+        <img src="{{ image }}" alt="Generated Image">
+    </div>
+    {% endif %}
+</body>
+</html>
